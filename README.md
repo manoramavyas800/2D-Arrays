@@ -79,3 +79,63 @@ public class Addition {
         printArray(sum);
     }
 }
+//SUBSTITUTION 2D MATRIX.
+
+import java.util.Scanner;
+public class Substitution {
+    static void PrintArray(int[][]matrix) {
+        for (int[] ans : matrix) {
+            for (int anInt : ans) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+    }
+    static void Diff(int [][]ans,int r1,int c1,int[][]arr2,int r2,int c2){
+        if(r1!=r2||c1!=c2){
+            System.out.println("Error- Substitution not possible");
+            return;
+        }
+        for(int i=0;i<ans.length;i++){
+            int j=0;
+            while (j<ans[i].length) {
+                ans[i][j]=ans[i][j]-arr2[i][j];
+                j++;
+            }
+        }
+        PrintArray(ans);
+
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r1 = sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c1 = sc.nextInt();
+        int[][] ans = new int[r1][c1];
+        System.out.println("Enter the elements of array");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                ans[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("Enter the r2 of array");
+        int r2 = sc.nextInt();
+        System.out.println("Enter the column2 of array");
+        int c2 = sc.nextInt();
+        int[][] arr2 = new int[r2][c2];
+        System.out.println("Enter the elements of array2");
+        for (int i = 0; i < r2; i++) {
+            for (int j = 0; j < c2; j++) {
+                arr2[i][j] = sc.nextInt();
+
+            }
+        }
+        System.out.println("matrix1");
+        PrintArray(arr2);
+        System.out.println("matrix2");
+        PrintArray(ans);
+        System.out.println("matrix substitution");
+        Diff(ans, r1, c1, arr2, r2, c2);
+    }
+    }
