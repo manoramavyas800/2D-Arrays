@@ -139,3 +139,44 @@ public class Substitution {
         Diff(ans, r1, c1, arr2, r2, c2);
     }
     }
+    //INVERSE MATRIX.
+
+    
+import java.util.Scanner;
+public class Permutation {
+    static void PrintArray(int[][]matrix) {
+        for (int[] ans : matrix) {
+            for (int anInt : ans) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+    }
+    static void inverse(int[][] matrix, int row, int col) {
+      for(int i = 0; i < row; i++) {
+          for(int j = i; j < col; j++) {
+              int temp=matrix[i][j];
+              matrix[i][j]=matrix[j][i];
+             matrix[j][i]=temp;
+          }
+      }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r1 = sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c1 = sc.nextInt();
+        int[][] ans = new int[r1][c1];
+        System.out.println("Enter the elements of array");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                ans[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("matrix2");
+        PrintArray(ans);
+        inverse(ans, r1, c1);
+        PrintArray(ans);
+    }
+    }
