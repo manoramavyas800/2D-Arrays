@@ -180,3 +180,64 @@ public class Permutation {
         PrintArray(ans);
     }
     }
+    //ROTATE ARRAY IN 90 DEGREE.
+    /*1 2 
+      3 4
+      ROTARE.
+      3 4
+      1 2 */
+import java.util.Scanner;
+public class RotateArray {
+    static void PrintArray(int[][]matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+           for (int j = 0; j < matrix[i].length; j++) {
+               System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    static void inverse(int[][] matrix, int row, int col) {
+      for(int i = 0; i < row; i++) {
+          for(int j = i; j < col; j++) {
+              int temp=matrix[i][j];
+              matrix[i][j]=matrix[j][i];
+             matrix[j][i]=temp;
+          }
+      }
+    }
+    static void rotateArray(int[][]ans, int n) {
+        inverse(ans, n,n);
+        for(int i = 0; i < n; i++) {
+           reverse(ans[i]);
+        }
+    }
+    static void reverse(int[]ans) {
+      int i=0, j=ans.length-1;
+      while(i<j) {
+          int temp=ans[i];
+          ans[i]=ans[j];
+          ans[j]=temp;
+          i++;
+          j--;
+      }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r1 = sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c1 = sc.nextInt();
+        int[][] ans = new int[r1][c1];
+        System.out.println("Enter the elements of array");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                ans[i][j] = sc.nextInt();
+            }
+        }
+        System.out.println("matrix2");
+        PrintArray(ans);
+       rotateArray(ans,r1);
+        System.out.println("rotate matrix.");
+        PrintArray(ans);
+    }
+    }
