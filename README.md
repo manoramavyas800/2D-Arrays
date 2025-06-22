@@ -275,3 +275,56 @@ public class PascalTrengle {
 
     }
     }
+    //SPIRAL ORDER PRINTING
+
+    import java.util.Scanner;
+class Spiral {
+    static int[][] spairalOrder(int[][] matrix,int r1,int c1) {
+        int topSide = 0, rightSide = c1 - 1, bottomSide = r1 - 1, leftSide = 0;
+        int totelElement = 0;
+        while (totelElement < r1 * c1) {
+            /*topside=left to right
+            rightSide=top to bottomSide
+            bottomSider=right to left
+            leftSide=bottom to top
+             */
+            for (int i = leftSide; i <= rightSide && totelElement < r1 * c1; i++) {
+               System.out.print(matrix[topSide][i] + " ");
+                totelElement++;
+            }
+            topSide++;
+        for (int i = topSide; i <=bottomSide && totelElement < r1 * c1; i++) {
+            System.out.print(matrix[i][rightSide] + " ");
+            totelElement++;
+        }
+        rightSide--;
+    for(int i=rightSide; i>=leftSide&&totelElement<r1*c1; i--) {
+       System.out.print(matrix[bottomSide][i] + " ");
+        totelElement++;
+    }
+    bottomSide--;
+    for(int i=bottomSide; i>=topSide&&totelElement<r1*c1; i--) {
+       System.out.print(matrix[i][leftSide] + " ");
+        totelElement++;
+    }
+    leftSide++;
+        }
+        return matrix;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r1= sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c1= sc.nextInt();
+        System.out.println("Enter the element of array");
+        int[][]matrix= new int[r1][c1];
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c1; j++) {
+                matrix[i][j]= sc.nextInt();
+            }
+        }
+        System.out.println("Enter the  totel element of array: ="+r1*c1);
+        spairalOrder(matrix,r1,c1);
+    }
+    }
