@@ -279,7 +279,7 @@ public class PascalTrengle {
 
     import java.util.Scanner;
 class Spiral {
-    static int[][] spairalOrder(int[][] matrix,int r1,int c1) {
+    static int[][] spiralOrder(int[][] matrix,int r1,int c1) {
         int topSide = 0, rightSide = c1 - 1, bottomSide = r1 - 1, leftSide = 0;
         int totelElement = 0;
         while (totelElement < r1 * c1) {
@@ -325,6 +325,57 @@ class Spiral {
             }
         }
         System.out.println("Enter the  totel element of array: ="+r1*c1);
-        spairalOrder(matrix,r1,c1);
+        spiralOrder(matrix,r1,c1);
+    }
+    }
+    //GENERET SPIRAL MATRIX
+
+
+import java.util.Scanner;
+class SpiralMatrix {
+    static void printArray(int [][]matrix){
+        for(int i=0;i<matrix.length;i++){
+            for(int j=0;j<matrix[i].length;j++){
+                System.out.print(matrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+    }
+    static int[][] generetspairalOrder(int n) {
+        int[][] matrix = new int[n][n];
+        int topSide = 0, rightSide = n - 1, bottomSide = n - 1, leftSide = 0;
+        int curent = 1;
+        while (curent<= n*n) {
+            /*topside=left to right
+            rightSide=top to bottomSide
+            bottomSider=right to left
+            leftSide=bottom to top
+             */
+            for (int i = leftSide; i <= rightSide && curent<=n*n; i++) {
+               matrix[topSide][i] =curent++;
+            }
+            topSide++;
+        for (int i = topSide; i <=bottomSide && curent<=n*n; i++) {
+            matrix[i][rightSide] =curent++;
+        }
+        rightSide--;
+    for(int i=rightSide; i>=leftSide&&curent<=n*n; i--) {
+       matrix[bottomSide][i]=curent++;
+    }
+    bottomSide--;
+    for(int i=bottomSide; i>=topSide&&curent<=n*n; i--) {
+       matrix[i][leftSide]=curent++;
+    }
+    leftSide++;
+        }
+        return matrix;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r1= sc.nextInt();
+       int[][]ans= generetspairalOrder(r1);
+        printArray(ans);
+
     }
     }
