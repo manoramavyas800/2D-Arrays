@@ -379,3 +379,42 @@ class SpiralMatrix {
 
     }
     }
+//SUM OF RECTANGLE USING BRUTE FORCE METHOD
+
+
+import java.util.Scanner;
+class RectangleSum {
+    static int sum(int [][]matrix,int l1,int l2,int r1,int r2){
+        int sum=0;
+        for(int i=l1;i<=l2;i++){
+            for(int j=r1;j<=r2;j++){
+                sum+=matrix[i][j];
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r= sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c= sc.nextInt();
+        System.out.println("Enter the Element of array");
+        int [][]matrix= new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("Enter the value of l1 array");
+        int l1= sc.nextInt();
+        System.out.println("Enter the value of l2 array");
+        int l2= sc.nextInt();
+        System.out.println("Enter the value of  r1 array");
+        int r1= sc.nextInt();
+        System.out.println("Enter the value of r2 array");
+        int r2= sc.nextInt();
+        System.out.println("sum of matrix is "+sum(matrix,l1,l2,r1,r2));
+    }
+    }
