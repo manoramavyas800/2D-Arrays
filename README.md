@@ -418,3 +418,63 @@ class RectangleSum {
         System.out.println("sum of matrix is "+sum(matrix,l1,l2,r1,r2));
     }
     }
+    //SUM OF RECTANGLE USING PRE-CALCULATING THE HORIZONTAL SUM FOR EACH ROW
+
+    
+import java.util.Scanner;
+class RectangleSum {
+    static void prafixSum(int[][]matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                matrix[i][j]+= matrix[i][j-1];
+            }
+        }
+    }
+    static int sum2(int [][]matrix,int l1,int l2,int r1,int r2) {
+        int sum = 0;
+        prafixSum(matrix);
+        for(int i=l1;i<=l2;i++){
+            if(r1>=1)
+            sum+=matrix[i][r1]-matrix[i][r1-1];
+            else
+                sum+=matrix[i][r2];
+        }
+
+        return sum;
+    }
+
+    static int sum(int [][]matrix,int l1,int l2,int r1,int r2){
+        int sum=0;
+        for(int i=l1;i<=l2;i++){
+            for(int j=r1;j<=r2;j++){
+                sum+=matrix[i][j];
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r= sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c= sc.nextInt();
+        System.out.println("Enter the Element of array");
+        int [][]matrix= new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("Enter the value of l1 array");
+        int l1= sc.nextInt();
+        System.out.println("Enter the value of l2 array");
+        int l2= sc.nextInt();
+        System.out.println("Enter the value of  r1 array");
+        int r1= sc.nextInt();
+        System.out.println("Enter the value of r2 array");
+        int r2= sc.nextInt();
+        System.out.println("sum of matrix is "+sum(matrix,l1,l2,r1,r2));
+        System.out.println("sum of matrix is "+sum2(matrix,l1,l2,r1,r2));
+    }
+    }
