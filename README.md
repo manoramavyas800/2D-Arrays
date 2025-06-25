@@ -478,3 +478,86 @@ class RectangleSum {
         System.out.println("sum of matrix is "+sum2(matrix,l1,l2,r1,r2));
     }
     }
+    //PREFIX SUM  OVER COLUMNS AND ROW BOTH(all three method in these code)
+
+    
+import java.util.Scanner;
+class permutation {
+    static void prafixSum(int[][]matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 1; j < matrix[0].length; j++) {
+                matrix[i][j]+= matrix[i][j-1];
+            }
+        }
+        //traverse vertically to calculate colum-wise sum
+        for (int i = 0; i < matrix[0].length; i++) {
+            for (int j = 1; j < matrix.length; j++) {
+               matrix[j][i]+=matrix[j-1][i];
+            }
+        }
+    }
+    static int sum3(int[][]matrix,int l1,int l2,int r1,int r2) {
+        int ans = 0;
+        int sum=0,up=0,left=0,leftup=0;
+        prafixSum(matrix);
+        sum=matrix[l2][r2];
+        if(r1>=1) {
+            left = matrix[l2][r1 - 1];
+        }
+        if(l1>=1) {
+            up = matrix[l1 - 1][r2];
+        }
+        if(l1>=1&&r1>=1) {
+            leftup = matrix[l1 - 1][r1 - 1];
+        }
+        ans=sum-up-left+leftup;
+        return ans;
+    }
+    static int sum2(int [][]matrix,int l1,int l2,int r1,int r2) {
+        int sum = 0;
+        prafixSum(matrix);
+        for(int i=l1;i<=l2;i++){
+            if(r1>=1)
+            sum+=matrix[i][r1]-matrix[i][r1-1];
+            else
+                sum+=matrix[i][r2];
+        }
+
+        return sum;
+    }
+
+    static int sum(int [][]matrix,int l1,int l2,int r1,int r2){
+        int sum=0;
+        for(int i=l1;i<=l2;i++){
+            for(int j=r1;j<=r2;j++){
+                sum+=matrix[i][j];
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the row of array");
+        int r= sc.nextInt();
+        System.out.println("Enter the column of array");
+        int c= sc.nextInt();
+        System.out.println("Enter the Element of array");
+        int [][]matrix= new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                matrix[i][j]=sc.nextInt();
+            }
+        }
+        System.out.println("Enter the value of l1 array");
+        int l1= sc.nextInt();
+        System.out.println("Enter the value of l2 array");
+        int l2= sc.nextInt();
+        System.out.println("Enter the value of  r1 array");
+        int r1= sc.nextInt();
+        System.out.println("Enter the value of r2 array");
+        int r2= sc.nextInt();
+        System.out.println("sum of matrix is "+sum(matrix,l1,l2,r1,r2));
+        System.out.println("sum of matrix is "+sum3(matrix,l1,l2,r1,r2));
+    }
+    }
