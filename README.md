@@ -561,3 +561,41 @@ class permutation {
         System.out.println("sum of matrix is "+sum3(matrix,l1,l2,r1,r2));
     }
     }
+//SNAKS FROBLEM.
+
+import java.util.Scanner;
+
+public class Main {
+    static int[][] snaksMat(int[][] matrix,int left,int right){
+        for(int i=0;i<matrix.length;i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    System.out.print(matrix[i][j] + " ");
+                    left++;
+                }
+            } else {
+                for (int j = matrix[i].length - 1; j >= 0; j--) {
+                    System.out.print(matrix[i][j] + " ");
+                    right++;
+                }
+            }
+        }
+        return matrix;
+    }
+            public static void main(String[] args) {
+               Scanner sc = new Scanner(System.in);
+               System.out.println("Enter the name of a row");
+               int r1 = sc.nextInt();
+               System.out.println("Enter the name of a column");
+               int c1 = sc.nextInt();
+               System.out.println("Enter the value of a matrix");
+               int[][] matrix = new int[r1][c1];
+               for (int i = 0; i < matrix.length; i++) {
+                   for (int j = 0; j < matrix[i].length; j++) {
+                       matrix[i][j] = sc.nextInt();
+                   }
+               }
+                snaksMat(matrix,r1,c1);
+
+            }
+        }
