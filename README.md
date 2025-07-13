@@ -599,3 +599,44 @@ public class Main {
 
             }
         }
+        //SNAKS PROBLEM USING ARRAYLIST.
+
+        import java.util.ArrayList;
+
+import java.util.Scanner;
+
+public class Main {
+    static ArrayList<Integer> snaksMat(int[][] matrix){
+        ArrayList<Integer> ArrayList=new ArrayList<>();
+
+        for(int i=0;i<matrix.length;i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < matrix[i].length; j++) {
+                    ArrayList.add(matrix[i][j]);
+                }
+            } else {
+                for (int j = matrix[i].length - 1; j >= 0; j--) {
+                    ArrayList.add(matrix[i][j]);
+                }
+            }
+        }
+        return ArrayList;
+    }
+            public static void main(String[] args) {
+               Scanner sc = new Scanner(System.in);
+               System.out.println("Enter the name of a row");
+               int r1 = sc.nextInt();
+               System.out.println("Enter the name of a column");
+               int c1 = sc.nextInt();
+               System.out.println("Enter the value of a matrix");
+               int[][] matrix = new int[r1][c1];
+               for (int i = 0; i < matrix.length; i++) {
+                   for (int j = 0; j < matrix[i].length; j++) {
+                       matrix[i][j] = sc.nextInt();
+                   }
+               }
+               ArrayList<Integer> snaksMat = snaksMat(matrix);
+               System.out.println(snaksMat);
+
+            }
+        }
